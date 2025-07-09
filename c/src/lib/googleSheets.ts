@@ -1,32 +1,38 @@
-const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwb0V4pbGRpkFqyzZ_fzO1fCCUi7DFzr2sa8Tz39gdzSMTLYq4519qHY-ga__HDPHJ0/exec';
+// src/lib/googleSheets.ts
 
-export interface FormData {
+// 🔁 ضع هنا رابط Google Apps Script الخاص بك بعد النشر (Publish > Deploy > Web App)
+const GOOGLE_SHEETS_URL =
+  'https://script.google.com/macros/s/AKfycbwb0V4pbGRpkFqyzZ_fzO1fCCUi7DFzr2sa8Tz39gdzSMTLYq4519qHY-ga__HDPHJ0/exec';
+
+// شكل البيانات المتوقع إرساله (يمكنك تعديله حسب النموذج)
+export interface VolunteerFormData {
   fullName: string;
-  email: string;
   mobile: string;
-  governorate: string;
-  university: string;
+  email: string;
   college: string;
+  university: string;
   year: string;
+  governorate: string;
   committee: string;
-  hasVolunteered: string;
   volunteerHistory: string;
+  hasVolunteered: string;
   acceptTerms: boolean;
   timestamp: string;
 }
 
-export async function sendToGoogleSheets(data: FormData): Promise<boolean> {
+// إرسال البيانات إلى Google Sheets باستخدام Google Apps Script
+export async function sendToGoogleSheets(data: VolunteerFormData): Promise<boolean> {
   try {
     await fetch(GOOGLE_SHEETS_URL, {
       method: 'POST',
-      mode: 'no-cors', // 👈 حل مشكلة CORS
+      mode: 'no-cors', // 👈 هذا مهم لتجنب مشكلة CORS في المتصفح
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
 
-    // مفيش طريقة نعرف إذا وصل أو لا، فهنرجع true دائمًا
+    // لا يمكن قراءة الرد عند استخدام no-cors، لذلك نعتبر أنه ناجح
     return true;
   } catch (error) {
     console.error('Error sending data to Google Sheets:', error);
