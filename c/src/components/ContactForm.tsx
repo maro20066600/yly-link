@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { database } from '@/lib/firebase';
 import { ref, push } from 'firebase/database';
+import { sendToGoogleSheets } from '@/lib/googleSheets';
 
 // تعريف اللجان المتاحة
 const COMMITTEES = [
@@ -71,6 +72,9 @@ export default function ContactForm() {
             // حفظ في Firebase
             const submissionsRef = ref(database, 'submissions');
             await push(submissionsRef, data);
+
+            // إرسال إلى Google Sheets
+            await sendToGoogleSheets(data);
 
             setStatus({ type: 'success', message: 'تم إرسال البيانات بنجاح!' });
             setFormData({
