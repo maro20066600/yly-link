@@ -1,7 +1,6 @@
-// Google Sheets API endpoint
-const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwCLK4WFe8_I1SKQWhjaCCQE_FwjKVXzoPrJKK9IaRsI5iJrf9efyc3jVHy7955Hqs/exec';
+// src/lib/googleSheets.ts
 
-interface FormData {
+export interface FormData {
   fullName: string;
   email: string;
   mobile: string;
@@ -15,6 +14,8 @@ interface FormData {
   acceptTerms: boolean;
   timestamp: string;
 }
+
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwb0V4pbGRpkFqyzZ_fzO1fCCUi7DFzr2sa8Tz39gdzSMTLYq4519qHY-ga__HDPHJ0/exec';
 
 export async function sendToGoogleSheets(data: FormData): Promise<boolean> {
   try {
@@ -31,4 +32,4 @@ export async function sendToGoogleSheets(data: FormData): Promise<boolean> {
     console.error('Error sending data to Google Sheets:', error);
     return false;
   }
-} 
+}
