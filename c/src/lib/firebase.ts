@@ -3,14 +3,14 @@ import { getDatabase } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-_QAIZkOgaGN1eaGM169P2sJq_F0N2z4",
-  authDomain: "maro-344ca.firebaseapp.com",
-  databaseURL: "https://maro-344ca-default-rtdb.firebaseio.com",
-  projectId: "maro-344ca",
-  storageBucket: "maro-344ca.firebasestorage.app",
-  messagingSenderId: "375386206313",
-  appId: "1:375386206313:web:7a5433f679f36ee84332f8",
-  measurementId: "G-BKW00QXHHJ"
+  apiKey: "AIzaSyCHRTyqg53UzCjsqbUtZ8csfkf1G9_f9V0",
+  authDomain: "yly-link-a8aca.firebaseapp.com",
+  projectId: "yly-link-a8aca",
+  storageBucket: "yly-link-a8aca.firebasestorage.app",
+  messagingSenderId: "78476729983",
+  appId: "1:78476729983:web:0ea7cc239b99e0e684a94a",
+  measurementId: "G-YGZEKJPDPQ",
+  databaseURL: "https://yly-link-a8aca-default-rtdb.firebaseio.com" // Adding databaseURL for Realtime Database
 };
 
 // Initialize Firebase
